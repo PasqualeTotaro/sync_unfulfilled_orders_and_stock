@@ -11,3 +11,4 @@ steps:
       - 'main'
       - '--region'
       - 'europe-west1'
+      - '--gen2'

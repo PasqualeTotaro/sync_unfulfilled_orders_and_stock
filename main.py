@@ -405,16 +405,16 @@ def main(request) -> APIStatus:
         save_last_update_date()
         stock_manager.commit_changes()
 
-        return APIStatus(
-            status_code=200,
-            message='Orders successfully updated in Google Sheets'
-        )
+        return {
+            'statusCode': 200,
+            'message': 'Orders successfully updated in Google Sheets'
+        }
         
     except Exception as e:
-        return APIStatus(
-            status_code=400,
-            message=str(e)
-        )
+        return {
+            'statusCode': 400,
+            'message': str(e)
+        }
     
 if __name__ == "__main__":
     main(None)
