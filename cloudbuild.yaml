@@ -12,3 +12,5 @@ steps:
       - '--region'
       - 'europe-west1'
       - '--gen2'
+      - '--service-account'
+      - 'data-sync@analytics-to-sheets-424319.iam.gserviceaccount.com'
