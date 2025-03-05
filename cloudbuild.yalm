@@ -1,0 +1,13 @@
+steps:
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - 'functions'
+      - 'deploy'
+      - 'sync_unfulfilled_orders_and_stock'
+      - '--runtime'
+      - 'python310'
+      - '--trigger-http'
+      - '--entry-point'
+      - 'main'
+      - '--region'
+      - 'europe-west1'

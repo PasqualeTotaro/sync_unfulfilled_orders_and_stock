@@ -9,9 +9,14 @@ from pytz import timezone
 from typing import NamedTuple
 
 def get_credentials():
+    is_cloud = os.getenv('K_SERVICE') is not None
     try:
         client = secretmanager.SecretManagerServiceClient()
     except Exception:
+        if is_cloud:
+            raise Exception("Failed to authenticate with Secret Manager in Cloud Functions")
+        
+        # Local development flow
         os.system('gcloud auth application-default set-quota-project analytics-to-sheets-424319')
         os.system('gcloud config set billing/quota_project analytics-to-sheets-424319')
         os.system('gcloud auth application-default login')
